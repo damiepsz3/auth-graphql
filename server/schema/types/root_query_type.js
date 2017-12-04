@@ -10,9 +10,8 @@ const RootQueryType = new GraphQLObjectType({
   fields: {
     user: {
       type: UserType,
-      args: { email: { type: GraphQLString }},
-      resolve(parentValue, args) {
-        return 'text'
+      resolve(parentValue, args, req) {
+        return req.user;
       }
     }
   }
