@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import AuthForm from './AuthForm';
 import { graphql } from 'react-apollo';
-import mutation from '../mutations/Login';
+import mutation from '../mutations/Signup';
 import query from '../queries/CurrentUser'
-import { hashHistory } from 'react-router'
 
-class LoginForm extends Component {
+class SignupForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = { errors: [] }
   }
 
@@ -21,25 +20,15 @@ class LoginForm extends Component {
     })
   }
 
-  componentWillUpdate(nextProps) {
-    //this.props the old, current set of nextProps
-    //nextProps the next set of props that will be in place
-    const { user } = nextProps.data
-    if (user) { hashHistory.push('/dashboard') }
-  }
-
   render() {
     return (
-      <div className="">
-        <h3>Login</h3>
+      <div>
+        <h3>Sign Up</h3>
         <AuthForm onSubmit={this.onSubmit.bind(this)} errors={this.state.errors}/>
       </div>
-
     );
   }
 
 }
 
-export default graphql(query)(
-  graphql(mutation)(LoginForm)
-);
+export default graphql(mutation)(SignupForm)
