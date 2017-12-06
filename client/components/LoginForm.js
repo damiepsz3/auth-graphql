@@ -30,6 +30,7 @@ class LoginForm extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="">
         <h3>Login</h3>
