@@ -24,8 +24,9 @@ class LoginForm extends Component {
   componentWillUpdate(nextProps) {
     //this.props the old, current set of nextProps
     //nextProps the next set of props that will be in place
-    const { user } = nextProps.data
-    if (user) { hashHistory.push('/dashboard') }
+    if (!this.props.data.user && nextProps.data.user) {  //wasn't loged in and now it is!
+      hashHistory.push('/dashboard')
+    }
   }
 
   render() {
